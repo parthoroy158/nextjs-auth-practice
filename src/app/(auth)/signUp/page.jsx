@@ -1,14 +1,31 @@
 "use client"
+import register from '@/app/action/register';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const page = () => {
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log({ email, password })
+        try {
+            const res = await register({ email, password })
+            console.log("This is the result:", res)
+
+            if (res.success == true) {
+                toast.success("Register Successful")
+            } else {
+                toast.error(`${res.message}`)
+            }
+        }
+        catch (error) {
+            console.log("This is the error:", error)
+            toast.error("Something wrong")
+        }
+
 
     }
     return (

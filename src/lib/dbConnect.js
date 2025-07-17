@@ -1,7 +1,9 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
+import react from 'react'
 
 export const NextJa_Auth = {
-    all_products:"all_products"
+    all_products:"products_list",
+    user_test:"user_test"
 }
 
 export const dbConnect = (collectionName) => {
